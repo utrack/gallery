@@ -24,4 +24,6 @@ const (
 	ChangeRemoval
 	// ChangeModification is sent when the file was modified.
 	ChangeModification
+	// ChangeRename is sent when the file was renamed.
+	ChangeRename
 )
