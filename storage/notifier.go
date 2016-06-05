@@ -1,4 +1,4 @@
-package filewatch
+package storage
 
 import (
 	"github.com/ansel1/merry"
