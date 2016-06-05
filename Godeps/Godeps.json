@@ -1,0 +1,81 @@
+{
+	"ImportPath": "github.com/utrack/gallery",
+	"GoVersion": "go1.6",
+	"GodepVersion": "v60",
+	"Packages": [
+		"./..."
+	],
+	"Deps": [
+		{
+			"ImportPath": "github.com/fsnotify/fsnotify",
+			"Comment": "v1.3.0",
+			"Rev": "30411dbcefb7a1da7e84f75530ad3abe4011b4f8"
+		},
+		{
+			"ImportPath": "github.com/gopherjs/gopherjs/js",
+			"Comment": "go1.5-41-g234e9ee",
+			"Rev": "234e9ee171319984abb43c1d7761675ba0890be5"
+		},
+		{
+			"ImportPath": "github.com/gorilla/websocket",
+			"Comment": "v1.0.0",
+			"Rev": "1f512fc3f05332ba7117626cdfb4e07474e58e60"
+		},
+		{
+			"ImportPath": "github.com/jtolds/gls",
+			"Comment": "v4.2.0",
+			"Rev": "8ddce2a84170772b95dd5d576c48d517b22cac63"
+		},
+		{
+			"ImportPath": "github.com/pkg/errors",
+			"Comment": "v0.5.1-2-g431554f",
+			"Rev": "431554f80b8ecf5058547f6c65b87fad81d90b03"
+		},
+		{
+			"ImportPath": "github.com/pquerna/ffjson/ffjson",
+			"Rev": "fa49a9f5832ba121db144795c147fe8449124aeb"
+		},
+		{
+			"ImportPath": "github.com/pquerna/ffjson/fflib/v1",
+			"Rev": "fa49a9f5832ba121db144795c147fe8449124aeb"
+		},
+		{
+			"ImportPath": "github.com/pquerna/ffjson/fflib/v1/internal",
+			"Rev": "fa49a9f5832ba121db144795c147fe8449124aeb"
+		},
+		{
+			"ImportPath": "github.com/smartystreets/assertions",
+			"Comment": "1.6.0-2-g2d74a41",
+			"Rev": "2d74a419fbe076f8c76ed8b1c7c633a676c5dc63"
+		},
+		{
+			"ImportPath": "github.com/smartystreets/assertions/internal/go-render/render",
+			"Comment": "1.6.0-2-g2d74a41",
+			"Rev": "2d74a419fbe076f8c76ed8b1c7c633a676c5dc63"
+		},
+		{
+			"ImportPath": "github.com/smartystreets/assertions/internal/oglematchers",
+			"Comment": "1.6.0-2-g2d74a41",
+			"Rev": "2d74a419fbe076f8c76ed8b1c7c633a676c5dc63"
+		},
+		{
+			"ImportPath": "github.com/smartystreets/goconvey/convey",
+			"Comment": "1.6.1-16-g55d548b",
+			"Rev": "55d548bcbd33d0fdfbd8844ede638af868cdf23e"
+		},
+		{
+			"ImportPath": "github.com/smartystreets/goconvey/convey/gotest",
+			"Comment": "1.6.1-16-g55d548b",
+			"Rev": "55d548bcbd33d0fdfbd8844ede638af868cdf23e"
+		},
+		{
+			"ImportPath": "github.com/smartystreets/goconvey/convey/reporting",
+			"Comment": "1.6.1-16-g55d548b",
+			"Rev": "55d548bcbd33d0fdfbd8844ede638af868cdf23e"
+		},
+		{
+			"ImportPath": "golang.org/x/sys/unix",
+			"Rev": "076b546753157f758b316e59bcb51e6807c04057"
+		}
+	]
+}
