@@ -15,11 +15,6 @@ type hub struct {
 	notifier storage.Notifier
 	lister   storage.Lister
 
-	// Locker locks filenames before the upload.
-	// It isn't allowed to upload two files with
-	// the same filename at once.
-	locker fileLocker
-
 	// conns is a map of connid -> session.
 	// session wraps the client's connection.
 	conns map[uint64]*session
@@ -39,8 +34,6 @@ func NewHub(list storage.Lister, notif storage.Notifier) Hub {
 	ret := &hub{
 		notifier: notif,
 		lister:   list,
-
-		locker: newFileLocker(),
 
 		conns: make(map[uint64]*session),
 

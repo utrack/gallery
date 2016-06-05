@@ -39,3 +39,7 @@ func (m *connMock) Send(msg json.RawMessage) {
 func (m *connMock) DisconChan() <-chan error {
 	return m.disconChan
 }
+
+func (m *connMock) Disconnect() {
+
+}

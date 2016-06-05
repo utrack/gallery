@@ -11,7 +11,7 @@ import (
 )
 
 var flagPath = flag.String("path", ".", "path to the gallery's directory")
-var flagHttpAddr = flag.String("port", ":8080", "HTTP server's port")
+var flagHttpAddr = flag.String("addr", ":8080", "HTTP server's port")
 
 func main() {
 	flag.Parse()
