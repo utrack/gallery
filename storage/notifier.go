@@ -1,8 +1,8 @@
 package storage
 
 import (
-	"github.com/ansel1/merry"
 	"github.com/fsnotify/fsnotify"
+	"github.com/pkg/errors"
 	"github.com/utrack/gallery/messages"
 )
 
@@ -19,12 +19,12 @@ type watcher struct {
 func NewNotifier(path string) (Notifier, error) {
 	fsWatcher, err := fsnotify.NewWatcher()
 	if err != nil {
-		return nil, merry.Wrap(err)
+		return nil, errors.Wrap(err, "couldn't init watcher")
 	}
 
 	err = fsWatcher.Add(path)
 	if err != nil {
-		return nil, merry.Wrap(err)
+		return nil, errors.Wrap(err, "couldn't watch directory")
 	}
 
 	ret := &watcher{
