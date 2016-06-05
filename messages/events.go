@@ -1,6 +1,7 @@
 package messages
 
 //go:generate stringer -type=FileChangeType
+//go:generate jsonenums -type=FileChangeType
 
 // FileChangeNotification is sent to the client
 // when a change to the fileset had occurred.

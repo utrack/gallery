@@ -4,9 +4,9 @@ package messages
 
 import "fmt"
 
-const _FileChangeType_name = "ChangeUnknownChangeAdditionChangeRemovalChangeModification"
+const _FileChangeType_name = "ChangeUnknownChangeAdditionChangeRemovalChangeModificationChangeRename"
 
-var _FileChangeType_index = [...]uint8{0, 13, 27, 40, 58}
+var _FileChangeType_index = [...]uint8{0, 13, 27, 40, 58, 70}
 
 func (i FileChangeType) String() string {
 	if i >= FileChangeType(len(_FileChangeType_index)-1) {
