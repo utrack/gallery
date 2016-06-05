@@ -6,6 +6,7 @@ import (
 	"github.com/utrack/gallery/client"
 	"github.com/utrack/gallery/messages"
 	"github.com/utrack/gallery/storage"
+	"log"
 	"sync"
 )
 
@@ -86,7 +87,7 @@ func (h *hub) pump() {
 			h.fanoutNotification(notif)
 		case dMsg := <-h.disconMsgs:
 			h.disconSession(dMsg.sessid)
-			// TODO log
+			log.Printf("Connection %v dropped: %v", dMsg.sessid, dMsg.reason)
 		}
 	}
 }

@@ -20,4 +20,6 @@ type Connection interface {
 	// which receives single value (error) at most. Error contains the
 	// discon's description which describes why the client had gone away.
 	DisconChan() <-chan error
+
+	Disconnect()
 }

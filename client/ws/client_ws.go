@@ -5,6 +5,7 @@ package clientWs
 
 import (
 	"encoding/json"
+	"errors"
 	"github.com/gorilla/websocket"
 	clientIface "github.com/utrack/gallery/client"
 	"sync"
@@ -43,6 +44,8 @@ func NewClient(ws *websocket.Conn) clientIface.Connection {
 		queueMsgsOut: make(chan []byte, 10),
 		disconChan:   make(chan error, 2),
 	}
+	go ret.readPump()
+	go ret.writePump()
 	return ret
 }
 
@@ -52,6 +55,11 @@ func (c *client) Send(m json.RawMessage) {
 
 func (c *client) DisconChan() <-chan error {
 	return c.disconChan
+}
+
+func (c *client) Disconnect() {
+	c.discon(errors.New("Spite"))
+	c.ws.Close()
 }
 
 func (c *client) discon(reason error) {
