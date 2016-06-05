@@ -13,6 +13,8 @@ const (
 // eventThrottler throttles the modification
 // events and sends out only first notification
 // in a row.
+// It is used to prevent the ChangeModification spam
+// when a large file gets written.
 type eventThrottler struct {
 	// map of filename -> throttle
 	files   map[string]*throttle
