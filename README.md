@@ -10,7 +10,7 @@ go get -u github.com/utrack/gallery/cmd/gogallery
 ```
 If you're using Go < 1.6 - you need to set envvar `GO15VENDOREXPERIMENT` to `1` before go-getting:
 ```
-GO15VENDOREXPERIMENT=1 go get -u github.com/utrack/go-simple-chat/cmd/gosimplechat
+GO15VENDOREXPERIMENT=1 go get -u github.com/utrack/gallery/cmd/gogallery
 ```
 
 # Running
@@ -27,6 +27,6 @@ HTTP server runs on addr `:8080` by default; use the `-addr` flag to change that
 
 # Testing
 ```
-go test github.com/utrack/go-simple-chat/...
+go test github.com/utrack/gallery/cmd/gogallery/...
 ```
 Tests are written using the [GoConvey](https://github.com/smartystreets/goconvey) framework. If you have `goconvey` tools installed in your `$PATH`, cd to the project's path and run `goconvey` to use its web interface.
