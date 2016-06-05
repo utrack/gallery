@@ -33,11 +33,24 @@ func main() {
 		log.Fatal(err)
 	}
 
+	uploader, err := storage.NewSaver(path)
+	if err != nil {
+		log.Fatal(err)
+	}
+
 	log.Println("Starting up the hub")
 	h := hub.NewHub(lister, notifier)
 
 	log.Printf("Starting HTTP server on port %v\n", *flagHttpAddr)
+
+	staticTemplate, err := getTemplate()
+	if err != nil {
+		log.Fatalf("Error when parsing template: %v", err)
+	}
+	http.HandleFunc(`/`, serveStatic(staticTemplate))
 	http.HandleFunc(`/ws`, ifaceHttp.ServeWs(h))
+	http.HandleFunc(`/up`, ifaceHttp.Upload(uploader))
+	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir(path))))
 
 	err = http.ListenAndServe(*flagHttpAddr, nil)
 	if err != nil {

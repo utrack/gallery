@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Gallery</title>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script type="text/javascript">
+    $(function() {
+    var conn;
+    var pics = $("#pics");
+
+    function changeUserList(name,joining) {
+        if (joining) {
+            var li = $("<li class=\"list-group-item\"/>").text(name);
+            userlist.append(li);
+        } else {
+            var li = userlist.children().filter(function() {return $(this).text() == name});
+            li.remove();
+        }
+    }
+
+    function addPic(path) {
+             var found = $(jq(path));
+             if (found.length) {
+                return;
+             }
+             var realPath = "/static/" + path;
+             var div = $("<div class=\"col-md-3 col-sm-4 col-xs-6\"/>").attr("id",path).append($("<a />").attr("href",realPath).append($("<img class=\"img-responsive\"/>").attr("src",realPath)));
+             pics.append(div);
+    }
+
+    // returns escaped class name for jQuery
+    function jq( myid ) {
+             return "#" + myid.replace( /(:|\.|\[|\]|,)/g, "\\$1" );
+    }
+
+    function delPic(path) {
+            var div = $(jq(path));
+            div.remove();
+    }
+
+
+    function procEvent(evt) {
+             switch (evt.change_type) {
+                    case "ChangeAddition":
+                         addPic(evt.filename);
+                         break;
+                    case "ChangeRemoval":
+                         delPic(evt.filename);
+                         break;
+                    case "ChangeModification":
+                         delPic(evt.filename);
+                         addPic(evt.filename);
+                         break;
+             }
+    }
+
+    // Init websockets and attach onmessage handler
+    if (!window["WebSocket"]) {
+        alert("Your browser does not support WebSockets.");
+        return;
+    }
+    conn = new WebSocket("ws://{{$}}/ws");
+    conn.onclose = function(evt) {
+        alert("Connection lost");
+    }
+    conn.onmessage = function(evt) {
+        data = JSON.parse(evt.data);
+        if ($.isArray(data)) {
+        // got array, seed values
+           for (i = 0; i < data.length; i++) {
+               addPic(data[i].filename);
+           }
+        } else {
+               procEvent(data);
+        }
+    }
+    });
+</script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+<style>
+img {
+  filter: gray; /* IE6-9 */
+  -webkit-filter: grayscale(1); /* Google Chrome, Safari 6+ & Opera 15+ */
+    -webkit-box-shadow: 0px 2px 6px 2px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 2px 6px 2px rgba(0,0,0,0.75);
+    box-shadow: 0px 2px 6px 2px rgba(0,0,0,0.75);
+    margin-bottom:20px;
+}
+
+img:hover {
+  filter: none; /* IE6-9 */
+  -webkit-filter: grayscale(0); /* Google Chrome, Safari 6+ & Opera 15+ */
+}
+</style>
+</head>
+<body>
+<div class="container">
+        <div class="row" style="height: 16vh">
+        <form class="form-inline" action="/up" method="post" enctype="multipart/form-data">
+          <div class="form-group">
+               <input id="input-1" type="file" class="file" name="upload">
+          </div>
+          <div class="form-group">
+                 <button type="submit" class="btn btn-default">Upload</button>
+          </div>
+        </form>
+        </div>
+        <div id="pics" class="row">
+        </div>
+    </div>
+</body>
+</html>
+

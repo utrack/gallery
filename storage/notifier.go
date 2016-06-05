@@ -4,6 +4,7 @@ import (
 	"github.com/fsnotify/fsnotify"
 	"github.com/pkg/errors"
 	"github.com/utrack/gallery/messages"
+	"path/filepath"
 )
 
 type watcher struct {
@@ -80,5 +81,6 @@ func fsEventToNotification(ev fsnotify.Event) messages.FileChangeNotification {
 	case fsnotify.Rename:
 		ret.Action = messages.ChangeRename
 	}
+	_, ret.Filename = filepath.Split(ret.Filename)
 	return ret
 }
