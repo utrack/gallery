@@ -1,3 +1,5 @@
+/*Package client provides common interface to the
+clients and their connections.*/
 package client
 
 import (
