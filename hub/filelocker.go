@@ -27,7 +27,7 @@ func (l *filelocker) LockIfNotExists(name string) (fileLock, error) {
 	l.files[name] = nil
 
 	// Return FileLock with callback set
-	return filelock{
+	return &filelock{
 		f:    l.unlock,
 		name: name,
 	}, nil
