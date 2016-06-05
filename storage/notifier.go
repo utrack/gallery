@@ -12,6 +12,8 @@ type watcher struct {
 	notificationChan chan messages.FileChangeNotification
 
 	w *fsnotify.Watcher
+
+	throttler *eventThrottler
 }
 
 // New returns the initiated Notifier that
@@ -31,6 +33,7 @@ func NewNotifier(path string) (Notifier, error) {
 		doneChan:         make(chan bool, 2),
 		notificationChan: make(chan messages.FileChangeNotification, 30),
 		w:                fsWatcher,
+		throttler:        newEventThrottler(),
 	}
 	go ret.pump()
 	return ret, nil
@@ -42,6 +45,8 @@ func (w *watcher) pump() {
 	for {
 		select {
 		case ev := <-w.w.Events:
+			w.throttler.pushEvent(ev)
+		case ev := <-w.throttler.outChan:
 			notification := fsEventToNotification(ev)
 			w.notificationChan <- notification
 		case <-w.doneChan:
