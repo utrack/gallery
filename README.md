@@ -1,4 +1,7 @@
-# gallery
+# gallery [![GoDoc](https://godoc.org/github.com/utrack/gallery?status.svg)](https://godoc.org/github.com/utrack/gallery)
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/utrack/gallery/blob/master/LICENSE)
+[![Go Report Card](https://goreportcard.com/badge/github.com/utrack/gallery)](https://goreportcard.com/report/github.com/utrack/gallery)
+
 Sample gallery written using Go.
 
 # Requirements
