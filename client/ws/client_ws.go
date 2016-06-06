@@ -37,6 +37,8 @@ type client struct {
 	disconChan chan error
 }
 
+// NewClient returns a client.Connection that uses passed
+// WebSocket connection as a transport.
 func NewClient(ws *websocket.Conn) clientIface.Connection {
 	ret := &client{
 		ws: ws,

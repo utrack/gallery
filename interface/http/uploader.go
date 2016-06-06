@@ -21,7 +21,7 @@ func Upload(u storage.Saver) http.HandlerFunc {
 
 		files := r.MultipartForm.File["upload"]
 
-		for i, _ := range files {
+		for i := range files {
 			// Open the file's reader
 			rdr, err := files[i].Open()
 			if err != nil {

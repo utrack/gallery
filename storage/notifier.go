@@ -17,7 +17,7 @@ type watcher struct {
 	throttler *eventThrottler
 }
 
-// New returns the initiated Notifier that
+// NewNotifier returns the initiated Notifier that
 // watches the specified directory.
 func NewNotifier(path string) (Notifier, error) {
 	fsWatcher, err := fsnotify.NewWatcher()

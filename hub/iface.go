@@ -9,6 +9,7 @@ type ConnectionAcceptor interface {
 	Accept(client.Connection) error
 }
 
+// Hub routes notifications from the storage to clients.
 type Hub interface {
 	ConnectionAcceptor
 }
