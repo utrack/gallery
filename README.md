@@ -30,3 +30,6 @@ HTTP server runs on addr `:8080` by default; use the `-addr` flag to change that
 go test github.com/utrack/gallery/cmd/gogallery/...
 ```
 Tests are written using the [GoConvey](https://github.com/smartystreets/goconvey) framework. If you have `goconvey` tools installed in your `$PATH`, cd to the project's path and run `goconvey` to use its web interface.
+
+## TODO
+- [ ] Generate thumbnails and show them instead of fullsize images
